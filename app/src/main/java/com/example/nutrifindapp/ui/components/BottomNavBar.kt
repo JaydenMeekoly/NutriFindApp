@@ -23,10 +23,10 @@ fun BottomNavBar(
 ) {
     // Include main navigation items (4 tabs + menu)
     val navItems = listOf(
-        Triple(Screen.Main, "Home", Icons.Default.Home),
-        Triple(Screen.Recipe, "Search", Icons.Default.Search),
-        Triple(Screen.RecommendedRecipes, "Recommended", Icons.Default.Star),
-        Triple(Screen.Favourites, "Favourites", Icons.Default.Favorite)
+        Triple(Screen.Main, stringResource(R.string.nav_home), Icons.Default.Home),
+        Triple(Screen.Recipe, stringResource(R.string.nav_search), Icons.Default.Search),
+        Triple(Screen.RecommendedRecipes, stringResource(R.string.nav_recommended), Icons.Default.Star),
+        Triple(Screen.Favourites, stringResource(R.string.nav_favourites), Icons.Default.Favorite)
     )
     
     NavigationBar {
@@ -50,7 +50,7 @@ fun BottomNavBar(
         // Menu button to open drawer
         NavigationBarItem(
             icon = { Icon(Icons.Default.Menu, contentDescription = "Menu") },
-            label = { Text("Menu") },
+            label = { Text(stringResource(R.string.nav_menu)) },
             selected = false,
             onClick = onMenuClick
         )

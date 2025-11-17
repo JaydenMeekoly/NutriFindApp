@@ -7,7 +7,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.nutrifindapp.R
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -46,14 +48,8 @@ sealed class Screen(val route: String) {
 
 data class DrawerMenuItem(
     val route: String,
-    val title: String,
+    val titleResId: Int,
     val icon: ImageVector
-)
-
-val drawerMenuItems = listOf(
-    DrawerMenuItem(Screen.Settings.route, "Settings", Icons.Default.Settings),
-    DrawerMenuItem(Screen.ShoppingList.route, "Shopping List", Icons.Default.ShoppingCart),
-    DrawerMenuItem(Screen.RecipeHistory.route, "Recipe History", Icons.Default.History)
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,12 +78,18 @@ fun AppNavigation() {
         else -> Screen.Main.route
     }
 
+    val drawerMenuItems = listOf(
+        DrawerMenuItem(Screen.Settings.route, R.string.nav_settings, Icons.Default.Settings),
+        DrawerMenuItem(Screen.ShoppingList.route, R.string.nav_shopping_list, Icons.Default.ShoppingCart),
+        DrawerMenuItem(Screen.RecipeHistory.route, R.string.nav_recipe_history, Icons.Default.History)
+    )
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
             ModalDrawerSheet {
                 Text(
-                    "NutriFindApp",
+                    stringResource(R.string.app_name),
                     modifier = Modifier.padding(16.dp),
                     style = MaterialTheme.typography.titleLarge
                 )
@@ -95,7 +97,7 @@ fun AppNavigation() {
                 drawerMenuItems.forEach { item ->
                     NavigationDrawerItem(
                         icon = { Icon(item.icon, contentDescription = null) },
-                        label = { Text(item.title) },
+                        label = { Text(stringResource(item.titleResId)) },
                         selected = currentRoute == item.route,
                         onClick = {
                             scope.launch {
