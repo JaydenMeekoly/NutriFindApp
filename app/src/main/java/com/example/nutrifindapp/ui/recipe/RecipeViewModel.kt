@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.nutrifindapp.data.model.Recipe
 import com.example.nutrifindapp.data.model.RecipeSearchResult
 import com.example.nutrifindapp.data.repository.FavouritesRepository
+import com.example.nutrifindapp.data.repository.RecipeHistoryRepository
 import com.example.nutrifindapp.data.repository.RecipeRepository
+import com.example.nutrifindapp.data.repository.ShoppingListRepository
 import com.example.nutrifindapp.ui.recipe.model.SearchFilters
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +21,9 @@ import javax.inject.Inject
 @HiltViewModel
 class RecipeViewModel @Inject constructor(
     private val recipeRepository: RecipeRepository,
-    private val favouritesRepository: FavouritesRepository
+    private val favouritesRepository: FavouritesRepository,
+    private val recipeHistoryRepository: RecipeHistoryRepository,
+    private val shoppingListRepository: ShoppingListRepository
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(RecipeUiState())
@@ -95,14 +99,13 @@ class RecipeViewModel @Inject constructor(
     }
 
     fun getRecipeDetails(recipeId: Int) {
-        _recipeDetailState.value = com.example.nutrifindapp.ui.recipe.detail.RecipeDetailState.Loading
-        
         viewModelScope.launch {
+            _recipeDetailState.value = com.example.nutrifindapp.ui.recipe.detail.RecipeDetailState.Loading
             try {
-                println("Fetching recipe details for ID: $recipeId")  // Debug log
                 val recipe = recipeRepository.getRecipeDetails(recipeId)
-                println("Successfully fetched recipe: ${recipe.title}")  // Debug log
                 _recipeDetailState.value = com.example.nutrifindapp.ui.recipe.detail.RecipeDetailState.Success(recipe)
+                // Add to history when recipe is viewed
+                recipeHistoryRepository.addToHistory(recipe)
             } catch (e: Exception) {
                 val errorMsg = "Failed to load recipe details: ${e.message}"
                 println(errorMsg)  // Debug log
@@ -119,6 +122,16 @@ class RecipeViewModel @Inject constructor(
     fun toggleFavourite(recipe: Recipe) {
         viewModelScope.launch {
             favouritesRepository.toggleFavourite(recipe)
+        }
+    }
+
+    fun addIngredientsToShoppingList(recipe: Recipe) {
+        viewModelScope.launch {
+            shoppingListRepository.addIngredientsFromRecipe(
+                ingredients = recipe.extendedIngredients,
+                recipeId = recipe.id,
+                recipeTitle = recipe.title
+            )
         }
     }
 }

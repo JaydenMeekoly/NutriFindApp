@@ -3,8 +3,8 @@ package com.example.nutrifindapp.ui.components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -18,15 +18,15 @@ import com.example.nutrifindapp.navigation.Screen
 @Composable
 fun BottomNavBar(
     currentRoute: String?,
+    onMenuClick: () -> Unit,
     onItemSelected: (Screen) -> Unit
 ) {
-    // Include all main navigation items
+    // Include main navigation items (4 tabs + menu)
     val navItems = listOf(
         Triple(Screen.Main, "Home", Icons.Default.Home),
         Triple(Screen.Recipe, "Search", Icons.Default.Search),
         Triple(Screen.RecommendedRecipes, "Recommended", Icons.Default.Star),
-        Triple(Screen.Favourites, "Favourites", Icons.Default.Favorite),
-        Triple(Screen.Settings, "Settings", Icons.Default.Settings)
+        Triple(Screen.Favourites, "Favourites", Icons.Default.Favorite)
     )
     
     NavigationBar {
@@ -36,7 +36,6 @@ fun BottomNavBar(
                 is Screen.Recipe -> currentRoute?.startsWith(Screen.Recipe.route) == true
                 is Screen.RecommendedRecipes -> currentRoute == Screen.RecommendedRecipes.route
                 is Screen.Favourites -> currentRoute == Screen.Favourites.route
-                is Screen.Settings -> currentRoute == Screen.Settings.route
                 else -> false
             }
             
@@ -47,5 +46,13 @@ fun BottomNavBar(
                 onClick = { onItemSelected(screen) }
             )
         }
+        
+        // Menu button to open drawer
+        NavigationBarItem(
+            icon = { Icon(Icons.Default.Menu, contentDescription = "Menu") },
+            label = { Text("Menu") },
+            selected = false,
+            onClick = onMenuClick
+        )
     }
 }

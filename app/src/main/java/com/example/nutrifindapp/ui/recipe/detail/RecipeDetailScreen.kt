@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -175,6 +176,29 @@ fun RecipeDetailScreen(
                     // Ingredients Section
                     if (recipe.extendedIngredients.isNotEmpty()) {
                         item { SectionTitle("Ingredients") }
+                        item {
+                            Button(
+                                onClick = {
+                                    viewModel.addIngredientsToShoppingList(recipe)
+                                    Toast.makeText(
+                                        context,
+                                        "Ingredients added to shopping list",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.ShoppingCart,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text("Add to Shopping List")
+                            }
+                        }
                         items(recipe.extendedIngredients) { ingredient ->
                             IngredientItem(ingredient = ingredient)
                         }
