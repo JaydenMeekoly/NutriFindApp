@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "423955154633",
+    "project_id": "nutrifind-57ef6",
+    "storage_bucket": "nutrifind-57ef6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423955154633:android:bd2ab72bc08c43d959ef18",
+        "android_client_info": {
+          "package_name": "com.example.nutrifind"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgJNcJkDTnlEozf_J9BMvg_2D3pX39HKs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
