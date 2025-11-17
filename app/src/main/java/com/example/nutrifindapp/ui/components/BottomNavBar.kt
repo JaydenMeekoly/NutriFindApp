@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -24,7 +25,8 @@ fun BottomNavBar(
         Triple(Screen.Main, "Home", Icons.Default.Home),
         Triple(Screen.Recipe, "Search", Icons.Default.Search),
         Triple(Screen.RecommendedRecipes, "Recommended", Icons.Default.Star),
-        Triple(Screen.Favourites, "Favourites", Icons.Default.Favorite)
+        Triple(Screen.Favourites, "Favourites", Icons.Default.Favorite),
+        Triple(Screen.Settings, "Settings", Icons.Default.Settings)
     )
     
     NavigationBar {
@@ -34,6 +36,7 @@ fun BottomNavBar(
                 is Screen.Recipe -> currentRoute?.startsWith(Screen.Recipe.route) == true
                 is Screen.RecommendedRecipes -> currentRoute == Screen.RecommendedRecipes.route
                 is Screen.Favourites -> currentRoute == Screen.Favourites.route
+                is Screen.Settings -> currentRoute == Screen.Settings.route
                 else -> false
             }
             

@@ -18,12 +18,14 @@ import com.example.nutrifindapp.ui.main.MainScreen
 import com.example.nutrifindapp.ui.recommended.RecommendedRecipesScreen
 import com.example.nutrifindapp.ui.recipe.RecipeScreen
 import com.example.nutrifindapp.ui.recipe.detail.RecipeDetailScreen
+import com.example.nutrifindapp.ui.settings.SettingsScreen
 
 sealed class Screen(val route: String) {
     object Main : Screen("main")
     object Recipe : Screen("recipe")
     object RecommendedRecipes : Screen("recommended")
     object Favourites : Screen("favourites")
+    object Settings : Screen("settings")
     object RecipeDetail : Screen("recipe_detail/{recipeId}")
 
     companion object {
@@ -39,6 +41,7 @@ sealed class BottomNavItem(val route: String, val title: String) {
     object Search : BottomNavItem("search", "Search")
     object Recommended : BottomNavItem("recommended", "Recommended")
     object Favourites : BottomNavItem("favourites", "Favourites")
+    object Settings : BottomNavItem("settings", "Settings")
 }
 
 @Composable
@@ -52,7 +55,8 @@ fun AppNavigation() {
         Screen.Main.route,
         Screen.Recipe.route,
         Screen.RecommendedRecipes.route,
-        Screen.Favourites.route -> true
+        Screen.Favourites.route,
+        Screen.Settings.route -> true
         else -> false
     }
 
@@ -61,6 +65,7 @@ fun AppNavigation() {
         currentRoute?.startsWith(Screen.Recipe.route) == true -> Screen.Recipe.route
         currentRoute?.startsWith(Screen.RecommendedRecipes.route) == true -> Screen.RecommendedRecipes.route
         currentRoute?.startsWith(Screen.Favourites.route) == true -> Screen.Favourites.route
+        currentRoute?.startsWith(Screen.Settings.route) == true -> Screen.Settings.route
         else -> Screen.Main.route
     }
 
@@ -123,6 +128,19 @@ fun AppNavigation() {
                                 }
                             }
 
+                            is Screen.Settings -> {
+                                if (currentRoute != Screen.Settings.route) {
+                                    navController.navigate(Screen.Settings.route) {
+                                        popUpTo(navController.graph.findStartDestination().id) {
+                                            saveState = true
+                                            inclusive = false
+                                        }
+                                        launchSingleTop = true
+                                        restoreState = true
+                                    }
+                                }
+                            }
+
                             // Add an else branch to handle any potential future Screen types
                             else -> { /* No-op */ }
                         }
@@ -168,6 +186,10 @@ fun AppNavigation() {
                         navController.navigate(Screen.getRecipeDetailRoute(recipeId))
                     }
                 )
+            }
+
+            composable(Screen.Settings.route) {
+                SettingsScreen()
             }
 
             composable(
