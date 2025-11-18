@@ -17,6 +17,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.nutrifindapp.data.repository.AuthRepository
+import com.example.nutrifindapp.ui.auth.AuthViewModel
+import com.example.nutrifindapp.ui.auth.LoginScreen
+import com.example.nutrifindapp.ui.auth.ProfileScreen
 import com.example.nutrifindapp.ui.components.BottomNavBar
 import com.example.nutrifindapp.ui.favourites.FavouritesScreen
 import com.example.nutrifindapp.ui.history.RecipeHistoryScreen
@@ -28,9 +32,12 @@ import com.example.nutrifindapp.ui.recipe.RecipeScreen
 import com.example.nutrifindapp.ui.recipe.detail.RecipeDetailScreen
 import com.example.nutrifindapp.ui.settings.SettingsScreen
 import com.example.nutrifindapp.ui.shoppinglist.ShoppingListScreen
+import com.example.nutrifindapp.utils.BiometricAuthManager
 import kotlinx.coroutines.launch
 
 sealed class Screen(val route: String) {
+    object Login : Screen("login")
+    object Profile : Screen("profile")
     object Main : Screen("main")
     object Recipe : Screen("recipe")
     object RecommendedRecipes : Screen("recommended")
@@ -56,24 +63,37 @@ data class DrawerMenuItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppNavigation() {
+fun AppNavigation(
+    biometricAuthenticated: Boolean,
+    authRepository: AuthRepository,
+    biometricManager: BiometricAuthManager
+) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     
-    // Check if this is the first launch
+    // Check authentication and first launch
     val settingsViewModel: SettingsViewModel = hiltViewModel()
+    val authViewModel: AuthViewModel = hiltViewModel()
     val userPreferences by settingsViewModel.userPreferences.collectAsState()
-    val startDestination = if (userPreferences.isFirstLaunch) Screen.Main.route else Screen.Recipe.route
+    val authUiState by authViewModel.uiState.collectAsState()
+    
+    // Determine start destination based on auth state
+    val startDestination = when {
+        !authUiState.isAuthenticated -> Screen.Login.route
+        !biometricAuthenticated -> Screen.Login.route // Wait for biometric
+        userPreferences.isFirstLaunch -> Screen.Main.route
+        else -> Screen.Recipe.route
+    }
 
-    // Only show bottom nav on main screens (not Settings, ShoppingList, or RecipeHistory)
+    // Only show bottom nav on main screens
     val showBottomNav = when (currentRoute) {
         Screen.Main.route,
         Screen.Recipe.route,
         Screen.RecommendedRecipes.route,
-        Screen.Favourites.route -> true
+        Screen.Favourites.route -> authUiState.isAuthenticated && biometricAuthenticated
         else -> false
     }
 
@@ -86,6 +106,7 @@ fun AppNavigation() {
     }
 
     val drawerMenuItems = listOf(
+        DrawerMenuItem(Screen.Profile.route, R.string.profile, Icons.Default.Person),
         DrawerMenuItem(Screen.Settings.route, R.string.nav_settings, Icons.Default.Settings),
         DrawerMenuItem(Screen.ShoppingList.route, R.string.nav_shopping_list, Icons.Default.ShoppingCart),
         DrawerMenuItem(Screen.RecipeHistory.route, R.string.nav_recipe_history, Icons.Default.History)
@@ -210,6 +231,28 @@ fun AppNavigation() {
             startDestination = startDestination,
             modifier = Modifier.padding(padding)
         ) {
+            composable(Screen.Login.route) {
+                LoginScreen(
+                    onLoginSuccess = {
+                        navController.navigate(Screen.Main.route) {
+                            popUpTo(Screen.Login.route) { inclusive = true }
+                        }
+                    },
+                    authRepository = authRepository
+                )
+            }
+            
+            composable(Screen.Profile.route) {
+                ProfileScreen(
+                    onLogout = {
+                        navController.navigate(Screen.Login.route) {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    },
+                    biometricManager = biometricManager
+                )
+            }
+            
             composable(Screen.Main.route) {
                 MainScreen(
                     onGetStarted = {

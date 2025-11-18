@@ -1,5 +1,9 @@
 <resources>
+    <!-- App Name -->
     <string name="app_name">NutriFindApp</string>
+    
+    <!-- Firebase - This will be auto-generated from google-services.json -->
+    <string name="default_web_client_id" translatable="false">YOUR_WEB_CLIENT_ID</string>
     
     <!-- Welcome Screen -->
     <string name="welcome_to_nutrifind">Welcome to NutriFind</string>
@@ -104,4 +108,28 @@
     <string name="error">Error</string>
     <string name="retry">Retry</string>
     <string name="ok">OK</string>
+    
+    <!-- Authentication -->
+    <string name="login_subtitle">Discover and save your favorite recipes</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="continue_as_guest">Continue as Guest</string>
+    <string name="login_privacy_notice">By continuing, you agree to our Terms of Service and Privacy Policy</string>
+    <string name="guest_user">Guest User</string>
+    <string name="guest_account">Guest Account</string>
+    <string name="google_account">Google Account</string>
+    
+    <!-- Profile -->
+    <string name="profile">Profile</string>
+    <string name="security">Security</string>
+    <string name="logout">Logout</string>
+    <string name="logout_confirmation_title">Logout?</string>
+    <string name="logout_confirmation_message">Are you sure you want to logout? Your saved data will remain on this device.</string>
+    
+    <!-- Biometric -->
+    <string name="biometric_login">Biometric Login</string>
+    <string name="biometric_description">Use fingerprint or face unlock to access the app</string>
+    <string name="biometric_not_available">Biometric authentication is not available on this device</string>
+    <string name="biometric_prompt_title">Authenticate</string>
+    <string name="biometric_prompt_subtitle">Use your biometric credential to continue</string>
+    <string name="biometric_prompt_cancel">Cancel</string>
 </resources>
