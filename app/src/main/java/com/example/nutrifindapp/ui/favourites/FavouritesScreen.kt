@@ -1,6 +1,15 @@
 package com.example.nutrifindapp.ui.favourites
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,6 +17,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -16,12 +26,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
+import com.example.nutrifindapp.R
 import com.example.nutrifindapp.data.local.FavouriteRecipe
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -35,7 +50,7 @@ fun FavouritesScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Favourites") },
+                title = { Text(stringResource(R.string.favourites)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
@@ -58,27 +73,30 @@ fun FavouritesScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
-                            .padding(16.dp),
+                            .padding(32.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
                         Icon(
                             imageVector = Icons.Default.FavoriteBorder,
                             contentDescription = null,
-                            modifier = Modifier.size(64.dp),
+                            modifier = Modifier.size(80.dp),
                             tint = MaterialTheme.colorScheme.primary
                         )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(24.dp))
                         Text(
-                            text = "No favourites yet",
-                            style = MaterialTheme.typography.titleLarge,
-                            color = MaterialTheme.colorScheme.onSurface
+                            text = stringResource(R.string.no_favourites),
+                            style = MaterialTheme.typography.headlineSmall,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(12.dp))
                         Text(
-                            text = "Start adding recipes to your favourites!",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                            text = stringResource(R.string.no_favourites_subtitle),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textAlign = TextAlign.Center
                         )
                     }
                 }

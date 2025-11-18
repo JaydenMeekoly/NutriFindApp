@@ -1,9 +1,15 @@
 package com.example.nutrifindapp.ui.recipe
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.FilterList
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -98,7 +104,7 @@ fun RecipeScreen(
 
             }
             
-            // Loading indicator
+            // Loading indicator with animation
             if (uiState.isLoading) {
                 Box(
                     modifier = Modifier
@@ -106,7 +112,20 @@ fun RecipeScreen(
                         .weight(1f),
                     contentAlignment = Alignment.Center
                 ) {
-                    CircularProgressIndicator()
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(48.dp),
+                            strokeWidth = 4.dp
+                        )
+                        Text(
+                            text = "Searching for delicious recipes...",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
                 }
             } 
             // Error message
@@ -170,26 +189,71 @@ fun RecipeScreen(
                     }
                 }
             } 
-            // Empty state
+            // Empty state with better design
             else if (uiState.searchQuery.isNotBlank()) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .weight(1f),
+                        .weight(1f)
+                        .padding(32.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("No recipes found. Try a different search term.")
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null,
+                            modifier = Modifier.size(64.dp),
+                            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
+                        )
+                        Text(
+                            text = "No recipes found",
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                        Text(
+                            text = "Try a different search term or adjust your filters",
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
             } 
-            // Initial state
+            // Initial state with better design
             else {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .weight(1f),
+                        .weight(1f)
+                        .padding(32.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("Search for recipes to get started")
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null,
+                            modifier = Modifier.size(80.dp),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                        Text(
+                            text = "Discover Delicious Recipes",
+                            style = MaterialTheme.typography.headlineSmall,
+                            color = MaterialTheme.colorScheme.onSurface,
+                            textAlign = TextAlign.Center
+                        )
+                        Text(
+                            text = "Search for your favorite dishes or explore new cuisines",
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
             }
         }

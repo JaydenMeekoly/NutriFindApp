@@ -20,6 +20,8 @@ import androidx.navigation.navArgument
 import com.example.nutrifindapp.ui.components.BottomNavBar
 import com.example.nutrifindapp.ui.favourites.FavouritesScreen
 import com.example.nutrifindapp.ui.history.RecipeHistoryScreen
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.nutrifindapp.ui.settings.SettingsViewModel
 import com.example.nutrifindapp.ui.main.MainScreen
 import com.example.nutrifindapp.ui.recommended.RecommendedRecipesScreen
 import com.example.nutrifindapp.ui.recipe.RecipeScreen
@@ -60,6 +62,11 @@ fun AppNavigation() {
     val currentRoute = navBackStackEntry?.destination?.route
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    
+    // Check if this is the first launch
+    val settingsViewModel: SettingsViewModel = hiltViewModel()
+    val userPreferences by settingsViewModel.userPreferences.collectAsState()
+    val startDestination = if (userPreferences.isFirstLaunch) Screen.Main.route else Screen.Recipe.route
 
     // Only show bottom nav on main screens (not Settings, ShoppingList, or RecipeHistory)
     val showBottomNav = when (currentRoute) {
@@ -200,7 +207,7 @@ fun AppNavigation() {
     ) { padding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Main.route,
+            startDestination = startDestination,
             modifier = Modifier.padding(padding)
         ) {
             composable(Screen.Main.route) {
