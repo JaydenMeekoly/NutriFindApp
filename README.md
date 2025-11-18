@@ -4,33 +4,33 @@ NutriFindApp is a modern mobile nutrition assistant designed to help users searc
 
 ---
 
-## 🚀 **Features**
+##  **Features**
 
-### 🔐 **Secure Authentication**
+###  **Secure Authentication**
 
 * **Google Single Sign-On (OAuth 2.0)**
   Fast, secure login using a user's existing Google account.
 * **Biometric Authentication**
   Supports fingerprint and facial recognition for quick and secure access.
 
-### 🍎 **Food Search & Nutrition Lookup**
+###  **Food Search & Nutrition Lookup**
 
 * Search thousands of foods
 * View calories, macronutrients, vitamins & minerals
 * Fast, clean UI for quick nutritional insights
 
-### 🍽️ **Meal Plan Generation**
+###  **Meal Plan Generation**
 
 * Create daily or weekly meal plans
 * Add foods to Breakfast, Lunch, Dinner, and Snacks
 * Auto-calculates nutritional totals
 
-### ⭐ **Favourites & Saved Foods**
+###  **Favourites & Saved Foods**
 
 * Save frequently used foods
 * Quickly access items without searching again
 
-### 🎨 **Clean and Responsive UI**
+###  **Clean and Responsive UI**
 
 * Simple navigation
 * High-contrast design
@@ -38,7 +38,7 @@ NutriFindApp is a modern mobile nutrition assistant designed to help users searc
 
 ---
 
-## 🧱 **Architecture Overview**
+##  **Architecture Overview**
 
 NutriFindApp follows a modular design consisting of:
 
@@ -65,7 +65,7 @@ This structure makes the project easy to maintain, extend, and debug.
 
 ---
 
-## 📚 **Data Structures Used**
+##  **Data Structures Used**
 
 NutriFindApp makes deliberate use of efficient data structures to support performance and usability.
 
@@ -104,24 +104,6 @@ Used for:
 **Why:**
 Mimics native mobile navigation flow.
 
----
-
-### **Hierarchical Food Categories (Tree-like Structure)**
-
-Although not implemented as raw binary trees, food categories follow a parent-child structure:
-
-```
-Food
- ├── Fruits
- │    ├── Citrus
- │    └── Berries
- ├── Vegetables
- ├── Proteins
- ├── Grains
-```
-
-**Why:**
-Makes it easy to group foods and organize meal planning.
 
 ---
 
@@ -137,7 +119,7 @@ Ensures secure, tamper-resistant authentication.
 
 ---
 
-## 🧩 **How Data Structures Support Core Features**
+##  **How Data Structures Support Core Features**
 
 | Feature         | Supporting Data Structure     | Contribution                        |
 | --------------- | ----------------------------- | ----------------------------------- |
@@ -149,7 +131,7 @@ Ensures secure, tamper-resistant authentication.
 
 ---
 
-## ⚠️ **Challenges Encountered**
+##  **Challenges Encountered**
 
 ### **Google SSO Integration**
 
@@ -176,7 +158,7 @@ Ensures secure, tamper-resistant authentication.
 
 ---
 
-## 🧠 **Key Learnings**
+##  **Key Learnings**
 
 ### **Technical**
 
@@ -201,24 +183,23 @@ Ensures secure, tamper-resistant authentication.
 
 ---
 
-## 🛠️ **Tech Stack**
+##  **Tech Stack**
 
-* **C# / .NET**
-* **Xamarin / MAUI / (depending on your project)**
+* **Kotlin Kts**
 * **Google Firebase / Identity Platform**
-* **Local Secure Storage (Biometrics)**
+* **Firebase (Biometrics)**
 
 ---
 
-## 📦 **Installation & Setup**
+##  **Installation & Setup**
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/NutriFindApp.git
+   git clone https://github.com/JaydenMeekoly/NutriFindApp.git 
    ```
-2. Open the project in Visual Studio
-3. Restore NuGet packages
+2. Open the project in Android Studios
+3. Sync with Gradle
 4. Configure Google Sign-In credentials
 5. Run on emulator or physical device
 
