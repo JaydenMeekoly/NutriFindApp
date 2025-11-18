@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NutriFindApp</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_to_nutrifind">Welkom by NutriFind</string>
+    <string name="landing_subtitle">Ontdek heerlike en gesonde resepte wat net vir jou gemaak is. Begin vandag jou kulinêre reis!</string>
+    <string name="get_started">Begin</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Tuis</string>
+    <string name="nav_search">Soek</string>
+    <string name="nav_recommended">Aanbeveel</string>
+    <string name="nav_favourites">Gunstelinge</string>
+    <string name="nav_menu">Kieslys</string>
+    <string name="nav_settings">Instellings</string>
+    <string name="nav_shopping_list">Inkopielys</string>
+    <string name="nav_recipe_history">Resep Geskiedenis</string>
+    
+    <!-- Recipe Search -->
+    <string name="search_recipes">Soek Resepte</string>
+    <string name="search_hint">Soek vir resepte…</string>
+    <string name="filters">Filters</string>
+    <string name="apply_filters">Pas Filters Toe</string>
+    <string name="clear_filters">Verwyder Filters</string>
+    <string name="no_recipes_found">Geen resepte gevind nie</string>
+    <string name="try_different_search">Probeer \'n ander soekterm of pas jou filters aan</string>
+    
+    <!-- Recipe Details -->
+    <string name="recipe_details">Resep Besonderhede</string>
+    <string name="back">Terug</string>
+    <string name="add_to_favourites">Voeg by gunstelinge</string>
+    <string name="remove_from_favourites">Verwyder van gunstelinge</string>
+    <string name="ingredients">Bestanddele</string>
+    <string name="add_to_shopping_list">Voeg by Inkopielys</string>
+    <string name="ingredients_added">Bestanddele by inkopielys gevoeg</string>
+    <string name="instructions">Instruksies</string>
+    <string name="minutes">min</string>
+    <string name="servings">porsies</string>
+    
+    <!-- Favourites -->
+    <string name="favourites">Gunstelinge</string>
+    <string name="no_favourites">Geen gunsteling resepte</string>
+    <string name="no_favourites_subtitle">Resepte wat jy gunsteling maak sal hier verskyn</string>
+    <string name="remove">Verwyder</string>
+    
+    <!-- Shopping List -->
+    <string name="shopping_list">Inkopielys</string>
+    <string name="shopping_list_empty">Inkopielys is leeg</string>
+    <string name="shopping_list_empty_subtitle">Voeg items by of voeg bestanddele van resepte by</string>
+    <string name="add_item">Voeg Item By</string>
+    <string name="item_name">Item naam</string>
+    <string name="amount">Hoeveelheid</string>
+    <string name="unit">Eenheid</string>
+    <string name="add">Voeg by</string>
+    <string name="cancel">Kanselleer</string>
+    <string name="clear_checked">Verwyder Gemerk</string>
+    <string name="clear_all">Verwyder Alles</string>
+    <string name="clear_shopping_list">Verwyder Inkopielys</string>
+    <string name="clear_shopping_list_confirm">Is jy seker jy wil al die items verwyder?</string>
+    <string name="delete_item">Verwyder item</string>
+    <string name="from_recipe">Van: %s</string>
+    
+    <!-- Recipe History -->
+    <string name="recipe_history">Resep Geskiedenis</string>
+    <string name="no_recipe_history">Geen resep geskiedenis</string>
+    <string name="no_recipe_history_subtitle">Resepte wat jy bekyk sal hier verskyn</string>
+    <string name="clear_history">Verwyder Geskiedenis</string>
+    <string name="clear_history_confirm">Is jy seker jy wil al die resep geskiedenis verwyder?</string>
+    <string name="clear">Verwyder</string>
+    <string name="remove_from_history">Verwyder van geskiedenis</string>
+    <string name="just_now">Sopas</string>
+    <string name="minutes_ago">%d minute gelede</string>
+    <string name="hours_ago">%d ure gelede</string>
+    <string name="days_ago">%d dae gelede</string>
+    
+    <!-- Settings -->
+    <string name="settings">Instellings</string>
+    <string name="appearance">Voorkoms</string>
+    <string name="dark_mode">Donker Modus</string>
+    <string name="dark_mode_subtitle">Aktiveer donker tema</string>
+    <string name="language">Taal</string>
+    <string name="language_subtitle">Kies app taal</string>
+    <string name="preferences">Voorkeure</string>
+    <string name="notifications">Kennisgewings</string>
+    <string name="notifications_subtitle">Aktiveer resep kennisgewings</string>
+    <string name="show_nutrition_info">Wys Voeding Inligting</string>
+    <string name="show_nutrition_info_subtitle">Vertoon voedingswaarde inligting</string>
+    <string name="about">Oor</string>
+    <string name="app_version">App Weergawe</string>
+    <string name="version_number">1.0.0</string>
+    
+    <!-- Language Options -->
+    <string name="language_english">Engels</string>
+    <string name="language_afrikaans">Afrikaans</string>
+    <string name="language_zulu">Zoeloe</string>
+    <string name="select_language">Kies Taal</string>
+    <string name="restart_required">Herbegin Vereis</string>
+    <string name="restart_required_message">Die app moet herbegin om die taalverandering toe te pas.</string>
+    <string name="restart_now">Herbegin Nou</string>
+    <string name="restart_later">Later</string>
+    
+    <!-- Common -->
+    <string name="loading">Laai…</string>
+    <string name="error">Fout</string>
+    <string name="retry">Probeer weer</string>
+    <string name="ok">OK</string>
+</resources>

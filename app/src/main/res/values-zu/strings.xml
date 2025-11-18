@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NutriFindApp</string>
+    
+    <!-- Welcome Screen -->
+    <string name="welcome_to_nutrifind">Siyakwamukela ku-NutriFind</string>
+    <string name="landing_subtitle">Thola izindlela zokupheka ezinambithekayo nezinempilo ezenzelwe wena. Qala uhambo lwakho lokupheka namuhla!</string>
+    <string name="get_started">Qala</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Ikhaya</string>
+    <string name="nav_search">Sesha</string>
+    <string name="nav_recommended">Okunconyiwe</string>
+    <string name="nav_favourites">Izintandokazi</string>
+    <string name="nav_menu">Imenyu</string>
+    <string name="nav_settings">Izilungiselelo</string>
+    <string name="nav_shopping_list">Uhlu Lokuthenga</string>
+    <string name="nav_recipe_history">Umlando Wezindlela Zokupheka</string>
+    
+    <!-- Recipe Search -->
+    <string name="search_recipes">Sesha Izindlela Zokupheka</string>
+    <string name="search_hint">Sesha izindlela zokupheka…</string>
+    <string name="filters">Izihlungi</string>
+    <string name="apply_filters">Sebenzisa Izihlungi</string>
+    <string name="clear_filters">Susa Izihlungi</string>
+    <string name="no_recipes_found">Azikho izindlela zokupheka ezitholiwe</string>
+    <string name="try_different_search">Zama igama lokusesha elihlukile noma lungisa izihlungi zakho</string>
+    
+    <!-- Recipe Details -->
+    <string name="recipe_details">Imininingwane Yendlela Yokupheka</string>
+    <string name="back">Emuva</string>
+    <string name="add_to_favourites">Faka ezintandokazi</string>
+    <string name="remove_from_favourites">Susa ezintandokazi</string>
+    <string name="ingredients">Izithako</string>
+    <string name="add_to_shopping_list">Faka Ohlwini Lokuthenga</string>
+    <string name="ingredients_added">Izithako zifakwe ohlwini lokuthenga</string>
+    <string name="instructions">Imiyalelo</string>
+    <string name="minutes">imiz</string>
+    <string name="servings">izabelo</string>
+    
+    <!-- Favourites -->
+    <string name="favourites">Izintandokazi</string>
+    <string name="no_favourites">Azikho izindlela zokupheka ezintandokazi</string>
+    <string name="no_favourites_subtitle">Izindlela zokupheka ozenza izintandokazi zizovela lapha</string>
+    <string name="remove">Susa</string>
+    
+    <!-- Shopping List -->
+    <string name="shopping_list">Uhlu Lokuthenga</string>
+    <string name="shopping_list_empty">Uhlu lokuthenga alunalutho</string>
+    <string name="shopping_list_empty_subtitle">Faka izinto noma faka izithako ezivela ezindleleni zokupheka</string>
+    <string name="add_item">Faka Into</string>
+    <string name="item_name">Igama lento</string>
+    <string name="amount">Inani</string>
+    <string name="unit">Iyunithi</string>
+    <string name="add">Faka</string>
+    <string name="cancel">Khansela</string>
+    <string name="clear_checked">Susa Okuphawuliwe</string>
+    <string name="clear_all">Susa Konke</string>
+    <string name="clear_shopping_list">Susa Uhlu Lokuthenga</string>
+    <string name="clear_shopping_list_confirm">Uqinisekile ukuthi ufuna ukususa zonke izinto?</string>
+    <string name="delete_item">Susa into</string>
+    <string name="from_recipe">Kusuka ku: %s</string>
+    
+    <!-- Recipe History -->
+    <string name="recipe_history">Umlando Wezindlela Zokupheka</string>
+    <string name="no_recipe_history">Awukho umlando wezindlela zokupheka</string>
+    <string name="no_recipe_history_subtitle">Izindlela zokupheka ozibukayo zizovela lapha</string>
+    <string name="clear_history">Susa Umlando</string>
+    <string name="clear_history_confirm">Uqinisekile ukuthi ufuna ukususa wonke umlando wezindlela zokupheka?</string>
+    <string name="clear">Susa</string>
+    <string name="remove_from_history">Susa emlandweni</string>
+    <string name="just_now">Khona manje</string>
+    <string name="minutes_ago">%d imizuzu edlule</string>
+    <string name="hours_ago">%d amahora edlule</string>
+    <string name="days_ago">%d izinsuku ezedlule</string>
+    
+    <!-- Settings -->
+    <string name="settings">Izilungiselelo</string>
+    <string name="appearance">Ukubukeka</string>
+    <string name="dark_mode">Imodi Emnyama</string>
+    <string name="dark_mode_subtitle">Nika amandla itimu elimnyama</string>
+    <string name="language">Ulimi</string>
+    <string name="language_subtitle">Khetha ulimi lohlelo</string>
+    <string name="preferences">Okuthandwayo</string>
+    <string name="notifications">Izaziso</string>
+    <string name="notifications_subtitle">Nika amandla izaziso zezindlela zokupheka</string>
+    <string name="show_nutrition_info">Bonisa Ulwazi Lokudla</string>
+    <string name="show_nutrition_info_subtitle">Bonisa ulwazi lokuondla</string>
+    <string name="about">Mayelana</string>
+    <string name="app_version">Inguqulo Yohlelo</string>
+    <string name="version_number">1.0.0</string>
+    
+    <!-- Language Options -->
+    <string name="language_english">IsiNgisi</string>
+    <string name="language_afrikaans">IsiBhunu</string>
+    <string name="language_zulu">IsiZulu</string>
+    <string name="select_language">Khetha Ulimi</string>
+    <string name="restart_required">Kudingeka Ukuqala Kabusha</string>
+    <string name="restart_required_message">Uhlelo kudingeka luqale kabusha ukuze lusebenzise ushintsho lolimi.</string>
+    <string name="restart_now">Qala Kabusha Manje</string>
+    <string name="restart_later">Kamuva</string>
+    
+    <!-- Common -->
+    <string name="loading">Iyalayisha…</string>
+    <string name="error">Iphutha</string>
+    <string name="retry">Zama futhi</string>
+    <string name="ok">KULUNGILE</string>
+</resources>
