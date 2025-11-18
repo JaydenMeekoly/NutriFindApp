@@ -4,6 +4,8 @@ NutriFindApp is a modern mobile nutrition assistant designed to help users searc
 
 ---
 
+## **Group Members**
+Joshua Pillai: ST10272691; Jayden Meekoly: ST10306957; Kyle Pillay: ST10226298
 ##  **Features**
 
 ###  **Secure Authentication**
